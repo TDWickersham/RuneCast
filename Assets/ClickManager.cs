@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class ClickManager : MonoBehaviour
 {
-    int possibleFails = 10;
-    int pairs = 9;
+
+    public delegate void StoreInfo();
+    public StoreInfo scores;
+
+    public int possibleFails = 10;
+    public int pairs = 9;
     public List<GameObject> compared;
     public static ClickManager instance;
     public Sprite blank;
-    public Text score;
-    public Text fail;
     public float blankDelay;
     bool display;
 	// Use this for initialization
-	void Start ()
+	void Awake()
     {
 		if (instance == null)
         {
@@ -26,8 +28,6 @@ public class ClickManager : MonoBehaviour
         {
             Destroy(this);
         }
-        score.text = "Pairs: " + pairs.ToString();
-        fail.text = "Misses: " + possibleFails.ToString();
         compared = new List<GameObject>();
 	}
 
@@ -64,7 +64,7 @@ public class ClickManager : MonoBehaviour
                // addedRune.GetComponent<Image>().sprite = blank;
                 possibleFails--;
             }
-
+            scores();
             compared.Clear();
         }
     }
@@ -89,20 +89,6 @@ public class ClickManager : MonoBehaviour
 
     }
 
-
-    private void Update()
-    {
-        score.text = "Pairs: " + pairs.ToString();
-        fail.text = "Misses: " + possibleFails.ToString();
-        if (pairs == 0)
-        {
-            SceneManager.LoadScene("Win");
-        }
-        else if (possibleFails == 0)
-        {
-            SceneManager.LoadScene("Lose");
-        }
-    }
-    
+   
 }
 
