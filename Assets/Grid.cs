@@ -39,6 +39,7 @@ public class Grid : MonoBehaviour {
         }
 	}
 	
+    // @caleb: Avoid empty Unity messages such as Start/Update/etc.
 	// Update is called once per frame
 	void Update ()
     {
