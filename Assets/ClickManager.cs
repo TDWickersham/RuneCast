@@ -15,10 +15,11 @@ public class ClickManager : MonoBehaviour
     public Text fail;
     public float blankDelay;
     bool display;
-	// Use this for initialization
-	void Start ()
+
+    // @caleb: Consider splitting initialization between Awake/Start
+    void Awake()
     {
-		if (instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -26,6 +27,11 @@ public class ClickManager : MonoBehaviour
         {
             Destroy(this);
         }
+    }
+
+	// Use this for initialization
+	void Start ()
+    {
         score.text = "Pairs: " + pairs.ToString();
         fail.text = "Misses: " + possibleFails.ToString();
         compared = new List<GameObject>();
@@ -34,6 +40,9 @@ public class ClickManager : MonoBehaviour
     // Update is called once per frame
     public void addRune(GameObject addedRune)
     {
+        // @caleb: Get the component once and then cache it at the top for future use
+        RuneManager rune = addedRune.GetComponent<RuneManager>();
+
         if (compared.Contains(addedRune) == false)
         {
             compared.Add(addedRune);
@@ -92,6 +101,8 @@ public class ClickManager : MonoBehaviour
 
     private void Update()
     {
+        // @caleb: Implement delegate/event-driven so that the text only updates
+        //         when the value of pairs or possibleFails changes 
         score.text = "Pairs: " + pairs.ToString();
         fail.text = "Misses: " + possibleFails.ToString();
         if (pairs == 0)
