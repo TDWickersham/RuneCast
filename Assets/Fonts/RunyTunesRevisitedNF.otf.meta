@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 0a77e8d7181682a4b97d0fe422ad7f53
+timeCreated: 1525191880
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Runy Tunes Revisited NF
+  fontNames:
+  - Runy Tunes Revisited NF
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 094745a5611a8584c85fa46212e13cfa, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
